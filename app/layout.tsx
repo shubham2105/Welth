@@ -1,16 +1,10 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import {Inter} from "next/font/google"
+import Header from "@/components/header"
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+// setting up customn font
+const inter = Inter({subsets:['latin']})
 
 export const metadata: Metadata = {
   title: "Welth",
@@ -30,10 +24,22 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/logo.png" type="image/png" sizes="32x32" />
       </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${inter.className}`}>
+        {/* header component */}
+        <Header />
+          
+        {/* main content */}
+        <main className="min-h-screen">
         {children}
+        </main>
+        {/* footer component */}
+        <footer className="bg-blue-50 py-12">
+          <div className="container mx-auto px-4 text-center text-gray-600">
+            <p>
+            Made with ❤️ by Shubham
+            </p>
+          </div>
+        </footer>
       </body>
     </html>
   );
